@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Instagram, Facebook, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 import { Instagram, Facebook, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { buildWhatsAppUrl, WHATSAPP_DISPLAY } from "./FloatingWhatsApp";
@@ -26,7 +26,7 @@ export function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="size-10 grid place-items-center rounded-full bg-white/10 hover:bg-accent transition"
+                className="w-10 h-10 grid place-items-center rounded-full bg-white/10 hover:bg-accent transition"
                 aria-label={label}
               >
                 <Icon className="size-4" />
@@ -39,17 +39,16 @@ export function Footer() {
           <h4 className="font-display text-lg mb-4 text-white">Explore</h4>
           <ul className="space-y-2.5 text-sm">
             {[
-              ["/rooms", "Rooms & Suites"],
-              ["/experience", "Experience"],
-              ["/gallery", "Gallery"],
-              ["/offers", "Special Offers"],
-              ["/about", "About Us"],
-              ["/faq", "FAQ"],
-            ].map(([to, label]) => (
-              <li key={to}>
-                <Link to={to} className="text-white/70 hover:text-accent transition">
+              ["#rooms", "Rooms & Suites"],
+              ["#experience", "Experience"],
+              ["#gallery", "Gallery"],
+              ["#offers", "Special Offers"],
+              ["#contact", "Contact"],
+            ].map(([href, label]) => (
+              <li key={href}>
+                <a href={href} className="text-white/70 hover:text-accent transition">
                   {label}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -59,21 +58,21 @@ export function Footer() {
           <h4 className="font-display text-lg mb-4 text-white">Contact</h4>
           <ul className="space-y-3 text-sm text-white/75">
             <li className="flex gap-3">
-              <MapPin className="size-4 mt-0.5 text-accent shrink-0" />
+              <MapPin className="w-4 h-4 mt-0.5 text-accent shrink-0" />
               <span>King Abdullah St, Naama Bay, Sharm El Sheikh</span>
             </li>
             <li className="flex gap-3">
-              <Phone className="size-4 mt-0.5 text-accent shrink-0" />
+              <Phone className="w-4 h-4 mt-0.5 text-accent shrink-0" />
               <span>+20 69-360-1012</span>
             </li>
             <li className="flex gap-3">
-              <MessageCircle className="size-4 mt-0.5 text-accent shrink-0" />
+              <MessageCircle className="w-4 h-4 mt-0.5 text-accent shrink-0" />
               <a href={buildWhatsAppUrl()} target="_blank" rel="noopener noreferrer" className="hover:text-accent">
                 {WHATSAPP_DISPLAY}
               </a>
             </li>
             <li className="flex gap-3">
-              <Mail className="size-4 mt-0.5 text-accent shrink-0" />
+              <Mail className="w-4 h-4 mt-0.5 text-accent shrink-0" />
               <a href="mailto:fo@naamabluehotel.com" className="hover:text-accent">
                 fo@naamabluehotel.com
               </a>
