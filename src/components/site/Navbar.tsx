@@ -34,7 +34,7 @@ export function Navbar({ transparentOnTop = false }: { transparentOnTop?: boolea
     >
       <div className="max-w-7xl mx-auto px-5 lg:px-8 h-20 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Naama Blue Hotel" className="h-12 w-auto" />
+          <img src={logo} alt="Naama Blue Hotel" className="h-20 w-auto scale-110" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-9">
@@ -54,7 +54,7 @@ export function Navbar({ transparentOnTop = false }: { transparentOnTop?: boolea
 
         <div className="flex items-center gap-3">
           <Link
-            to="/book"
+            to="/"
             className="hidden sm:inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground px-5 py-2.5 text-sm font-semibold tracking-wide shadow-card hover:brightness-110 transition"
           >
             Book Now
@@ -83,7 +83,7 @@ export function Navbar({ transparentOnTop = false }: { transparentOnTop?: boolea
               </Link>
             ))}
             <Link
-              to="/book"
+              to="/"
               onClick={() => setOpen(false)}
               className="mt-3 inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground px-5 py-3 text-sm font-semibold"
             >

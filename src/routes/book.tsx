@@ -3,6 +3,7 @@ import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { rooms } from "@/lib/rooms";
 import { CheckCircle2 } from "lucide-react";
+import { useState } from "react";
 
 export const Route = createFileRoute("/book")({
   head: () => ({
@@ -15,10 +16,21 @@ export const Route = createFileRoute("/book")({
     ],
     links: [{ rel: "canonical", href: "/book" }],
   }),
+  validateSearch: (search) => {
+    return {
+      room: (search.room as string | undefined),
+      offer: (search.offer as string | undefined),
+      price: (search.price as string | undefined),
+      roomName: (search.roomName as string | undefined),
+    };
+  },
   component: BookPage,
 });
 
 function BookPage() {
+  const search = Route.useSearch();
+  const [selectedRoom, setSelectedRoom] = useState(search.room || "");
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -40,8 +52,9 @@ function BookPage() {
               <Field label="Children" type="number" defaultValue="0" />
               <label className="block">
                 <span className="text-xs uppercase tracking-[0.14em] font-semibold text-muted-foreground">Room</span>
-                <select className="mt-2 w-full bg-secondary/60 border border-border rounded-xl px-4 py-3 text-sm">
-                  {rooms.map((r) => <option key={r.slug}>{r.name} — ${r.price}/night</option>)}
+                <select value={selectedRoom} onChange={(e) => setSelectedRoom(e.target.value)} className="mt-2 w-full bg-secondary/60 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent">
+                  <option value="">Select a room</option>
+                  {rooms.map((r) => <option key={r.slug} value={r.slug}>{r.name} — ${r.price}/night</option>)}
                 </select>
               </label>
             </div>

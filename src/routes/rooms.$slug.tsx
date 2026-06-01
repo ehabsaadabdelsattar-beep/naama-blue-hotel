@@ -97,7 +97,7 @@ function RoomDetail() {
             >
               <MessageCircle className="size-4" /> Book on WhatsApp
             </a>
-            <Link to="/book" className="mt-3 w-full inline-flex justify-center rounded-full bg-accent text-accent-foreground px-6 py-3.5 text-sm font-semibold hover:brightness-110 transition">
+            <Link to="/book" search={{ room: room.slug, price: room.price.toString(), roomName: room.name }} className="mt-3 w-full inline-flex justify-center rounded-full bg-accent text-accent-foreground px-6 py-3.5 text-sm font-semibold hover:brightness-110 transition">
               Reserve via form
             </Link>
             <p className="text-xs text-muted-foreground text-center mt-3">Free cancellation up to 48h before arrival</p>

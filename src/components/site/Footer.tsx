@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { Instagram, Facebook, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
+import { Camera, Globe, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { buildWhatsAppUrl, WHATSAPP_DISPLAY } from "./FloatingWhatsApp";
 
-const socials: { Icon: typeof Instagram; href: string; label: string }[] = [
-  { Icon: Instagram, href: "https://www.instagram.com/naamabluehotel/", label: "Instagram" },
-  { Icon: Facebook, href: "https://web.facebook.com/naamabluehotel.Sharm.eg", label: "Facebook" },
+const socials: { Icon: typeof Camera; href: string; label: string }[] = [
+  { Icon: Camera, href: "https://www.instagram.com/naamabluehotel/", label: "Instagram" },
+  { Icon: Globe, href: "https://web.facebook.com/naamabluehotel.Sharm.eg", label: "Facebook" },
   { Icon: MessageCircle, href: buildWhatsAppUrl(), label: "WhatsApp" },
 ];
 
@@ -15,7 +15,7 @@ export function Footer() {
     <footer className="bg-[var(--ink)] text-white/85">
       <div className="max-w-7xl mx-auto px-5 lg:px-8 py-16 grid gap-12 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          <img src={logo} alt="Naama Blue Hotel" className="h-16 w-auto bg-white/95 rounded-lg p-2" />
+          <img src={logo} alt="Naama Blue Hotel" className="h-32 w-auto bg-white/95 rounded-lg p-2" />
           <p className="mt-5 text-sm leading-relaxed text-white/70">
             A tropical escape on the shore of Naama Bay, Sharm El Sheikh — where the Red Sea meets refined hospitality.
           </p>

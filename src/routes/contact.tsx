@@ -30,10 +30,10 @@ function ContactPage() {
       <section className="px-5 lg:px-8 max-w-7xl mx-auto pb-24 grid lg:grid-cols-2 gap-12">
         <div>
           <ul className="space-y-5 text-foreground">
-            <ContactItem Icon={MapPin} title="Address" text="Naama Bay Promenade, Sharm El Sheikh, South Sinai, Egypt" />
-            <ContactItem Icon={Phone} title="Phone" text="+20 100 000 0000" />
-            <ContactItem Icon={MessageCircle} title="WhatsApp" text="+20 100 000 0000" />
-            <ContactItem Icon={Mail} title="Email" text="hello@naamabluehotel.com" />
+            <ContactItem Icon={MapPin} title="Address" text="King Abdullah St, Naama Bay, Sharm El Sheikh" />
+            <ContactItem Icon={Phone} title="Phone" text="+20 69-360-1012" />
+            <ContactItem Icon={MessageCircle} title="WhatsApp" text="+20 1555 672 606" />
+            <ContactItem Icon={Mail} title="Email" text="fo@naamabluehotel.com" />
           </ul>
 
           <div className="mt-10 rounded-3xl overflow-hidden shadow-card border border-border">

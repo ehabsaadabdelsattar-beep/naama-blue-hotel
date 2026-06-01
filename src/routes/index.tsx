@@ -35,7 +35,7 @@ function HomePage() {
       <Navbar transparentOnTop />
 
       {/* HERO */}
-      <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden">
+      <section className="relative h-[100svh] min-h-[640px] w-full">
         <img
           src={heroBay}
           alt="Naama Bay at golden hour"
@@ -44,7 +44,7 @@ function HomePage() {
         />
         <div className="absolute inset-0 bg-hero-overlay" />
 
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-5">
+        <div className="absolute inset-0 h-full flex flex-col items-center justify-center text-center px-5 z-10">
           <span className="text-white/80 text-xs tracking-[0.4em] uppercase mb-6 animate-fade-up">
             Naama Bay • Sharm El Sheikh
           </span>

@@ -50,8 +50,8 @@ function RoomsPage() {
                   <span className="text-3xl font-display">${r.price}</span>
                   <span className="text-sm text-muted-foreground"> / night</span>
                 </span>
-                <Link to="/rooms/$slug" params={{ slug: r.slug }} className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-semibold hover:bg-accent hover:text-accent-foreground transition">
-                  View details <ArrowRight className="size-4" />
+                <Link to="/book" search={{ room: r.slug, price: r.price.toString(), roomName: r.name }} className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-6 py-3 text-sm font-semibold hover:brightness-110 transition">
+                  Book Now <ArrowRight className="size-4" />
                 </Link>
               </div>
             </div>
