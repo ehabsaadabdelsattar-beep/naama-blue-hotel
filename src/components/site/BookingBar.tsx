@@ -31,7 +31,7 @@ export function BookingBar({ floating = false }: { floating?: boolean }) {
 
   return (
     <div
-      className={`${floating ? "absolute left-1/2 -translate-x-1/2 -bottom-12 w-[min(1100px,92vw)]" : "w-full"} z-50`}
+      className={`${floating ? "absolute left-1/2 -translate-x-1/2 -bottom-12 w-[min(1100px,92vw)] z-30" : "w-full"}`}
     >
       <form
         onSubmit={handleSearch}

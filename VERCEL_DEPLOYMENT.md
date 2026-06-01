@@ -10,7 +10,7 @@
 
 ```bash
 npm install
-npm run build:vercel
+npm run build
 npx vite preview
 ```
 
@@ -45,7 +45,7 @@ VITE_API_URL=https://your-api-url.com
 
 This project uses **TanStack Start + Nitro** (not a plain static `dist/` folder).
 
-- **Build Command**: `npm run build:vercel`
+- **Build Command**: `npm run build`
 - **Output Directory**: leave empty (Vercel uses `.vercel/output` from Nitro automatically)
 - **Install Command**: `npm ci`
 
@@ -65,7 +65,7 @@ Cause: Vercel was serving the wrong folder (`dist`) instead of the Nitro build (
 
 Fix:
 
-1. Use build command `npm run build:vercel` (see `vercel.json`)
+1. Use build command `npm run build` (see `vercel.json`)
 2. In Vercel → Project → Settings → Build & Development → **clear** “Output Directory” if it says `dist`
 3. Redeploy
 
