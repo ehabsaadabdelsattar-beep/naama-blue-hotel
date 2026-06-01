@@ -1,5 +1,36 @@
+# Version control
 .git
 .gitignore
+
+# Documentation
 README.md
+*.md
+
+# Development
 .env.example
+.env.local
+.env.*.local
+
+# Dependencies
 node_modules
+
+# Build artifacts
+dist
+build
+.cache
+.turbo
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Other
+npm-debug.log
+yarn-error.log
+
