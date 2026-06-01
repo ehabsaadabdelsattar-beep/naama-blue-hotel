@@ -5,16 +5,18 @@ import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
-const deployToVercel = process.env.VERCEL === "1";
+const isDev = process.argv.includes("dev");
 
-export default defineConfig({
-  plugins: [
-    tanstackStart({
-      server: { entry: "server" },
-    }),
-    ...(deployToVercel ? [nitro({ preset: "vercel" })] : []),
-    viteReact(),
-    tailwindcss(),
-    tsconfigPaths(),
-  ],
-});
+export default isDev
+  ? defineConfig({
+      plugins: [tanstackStart({ server: { entry: "server" } }), viteReact(), tailwindcss(), tsconfigPaths()],
+    })
+  : defineConfig({
+      plugins: [
+        tanstackStart({ server: { entry: "server" } }),
+        nitro({ preset: "vercel" }),
+        viteReact(),
+        tailwindcss(),
+        tsconfigPaths(),
+      ],
+    });
