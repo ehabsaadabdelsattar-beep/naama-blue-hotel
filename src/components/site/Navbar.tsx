@@ -27,71 +27,75 @@ export function Navbar({ transparentOnTop = false }: { transparentOnTop?: boolea
   const solid = !transparentOnTop || scrolled;
 
   return (
-    <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
-        solid ? "bg-background/85 backdrop-blur-md border-b border-border" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-5 lg:px-8 h-20 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="Naama Blue Hotel" className="h-20 w-auto scale-110" />
-        </Link>
-
-        <nav className="hidden lg:flex items-center gap-9">
-          {links.map((l) => (
-            <Link
-              key={l.to}
-              to={l.to}
-              className={`text-sm font-medium tracking-wide transition-colors ${
-                solid ? "text-foreground/80 hover:text-accent" : "text-white/90 hover:text-white"
-              }`}
-              activeProps={{ className: "text-accent" }}
-            >
-              {l.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-3">
-          <Link
-            to="/"
-            className="hidden sm:inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground px-5 py-2.5 text-sm font-semibold tracking-wide shadow-card hover:brightness-110 transition"
-          >
-            Book Now
+    <>
+      <header
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+          solid ? "bg-background/85 backdrop-blur-md border-b border-border" : "bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-5 lg:px-8 h-20 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2">
+            <img src={logo} alt="Naama Blue Hotel" className="h-20 w-auto scale-110" />
           </Link>
-          <button
-            onClick={() => setOpen((v) => !v)}
-            className={`lg:hidden p-2 rounded-md ${solid ? "text-foreground" : "text-white"}`}
-            aria-label="Toggle menu"
-          >
-            {open ? <X /> : <Menu />}
-          </button>
-        </div>
-      </div>
 
-      {open && (
-        <div className="lg:hidden bg-background border-t border-border animate-fade-up">
-          <div className="px-5 py-4 flex flex-col gap-1">
+          <nav className="hidden lg:flex items-center gap-9">
             {links.map((l) => (
               <Link
                 key={l.to}
                 to={l.to}
-                onClick={() => setOpen(false)}
-                className="py-3 px-2 text-base font-medium text-foreground/80 hover:text-accent border-b border-border last:border-0"
+                className={`text-sm font-medium tracking-wide transition-colors ${
+                  solid ? "text-foreground/80 hover:text-accent" : "text-white/90 hover:text-white"
+                }`}
+                activeProps={{ className: "text-accent" }}
               >
                 {l.label}
               </Link>
             ))}
-            <Link
-              to="/"
-              onClick={() => setOpen(false)}
-              className="mt-3 inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground px-5 py-3 text-sm font-semibold"
+          </nav>
+
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setOpen((v) => !v)}
+              className={`lg:hidden p-2 rounded-md ${solid ? "text-foreground" : "text-white"}`}
+              aria-label="Toggle menu"
             >
-              Book Now
-            </Link>
+              {open ? <X /> : <Menu />}
+            </button>
           </div>
         </div>
-      )}
-    </header>
+
+        {open && (
+          <div className="lg:hidden bg-background border-t border-border animate-fade-up">
+            <div className="px-5 py-4 flex flex-col gap-1">
+              {links.map((l) => (
+                <Link
+                  key={l.to}
+                  to={l.to}
+                  onClick={() => setOpen(false)}
+                  className="py-3 px-2 text-base font-medium text-foreground/80 hover:text-accent border-b border-border last:border-0"
+                >
+                  {l.label}
+                </Link>
+              ))}
+              <Link
+                to="/"
+                onClick={() => setOpen(false)}
+                className="mt-3 inline-flex items-center justify-center rounded-full bg-accent text-accent-foreground px-5 py-3 text-sm font-semibold"
+              >
+                Book Now
+              </Link>
+            </div>
+          </div>
+        )}
+      </header>
+      <Link
+        to="/"
+        className={`hidden sm:inline-flex fixed top-5 right-8 items-center justify-center rounded-full bg-accent text-accent-foreground px-5 py-2.5 text-sm font-semibold tracking-wide shadow-card hover:brightness-110 transition z-40 ${
+          solid ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
+      >
+        Book Now
+      </Link>
+    </>
   );
 }
