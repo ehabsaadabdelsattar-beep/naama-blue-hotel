@@ -133,6 +133,56 @@ export const en = {
     goHome: "Go home",
     tryAgain: "Try again",
   },
+  book: {
+    formTitle: "Your stay",
+    formCheckIn: "Check-in",
+    formCheckOut: "Check-out",
+    formAdults: "Adults",
+    formChildren: "Children",
+    formRoom: "Room",
+    selectRoom: "Select a room",
+    formDetails: "Your details",
+    firstName: "First name",
+    lastName: "Last name",
+    email: "Email",
+    phone: "Phone",
+    specialRequests: "Special requests",
+    specialRequestsPlaceholder: "Airport transfer, anniversary, dietary preferences…",
+    submitButton: "Request booking",
+    whyBookDirect: "Why book direct",
+    bookDirectReasons: ["Best rate guaranteed", "Free cancellation up to 48h", "Complimentary welcome drink", "Priority room selection", "Direct line to our concierge"],
+    needHelp: "Need help? Our reservation desk is available 24/7.",
+  },
+  faq: {
+    pageTitle: "Good to know",
+    pageSubtitle: "Check-in times, airport transfer, cancellation and payment — everything you need to know before your stay.",
+    questions: [
+      {
+        q: "What are your check-in and check-out times?",
+        a: "Check-in is from 2:00 PM and check-out is until 12:00 PM. Early check-in and late check-out are subject to availability and can be arranged with our concierge.",
+      },
+      {
+        q: "Do you offer airport transfers?",
+        a: "Yes — we provide private transfers from Sharm El Sheikh International Airport (SSH). Book in advance through the concierge or include it during your reservation.",
+      },
+      {
+        q: "What is your cancellation policy?",
+        a: "Most rates include free cancellation up to 48 hours before arrival. Special offer rates may have different terms — these are clearly noted at booking.",
+      },
+      {
+        q: "Which payment methods do you accept?",
+        a: "We accept all major credit cards (Visa, Mastercard, Amex), bank transfers, and cash payments in EUR, USD and EGP.",
+      },
+      {
+        q: "Is breakfast included?",
+        a: "Breakfast is included with most room rates. Half-board and all-inclusive upgrades are available — ask our team for the latest packages.",
+      },
+      {
+        q: "Do you welcome children?",
+        a: "Absolutely. Our Family Suite is designed for stays with kids, and children under 6 stay free in their parents' room.",
+      },
+    ],
+  },
   seo: {
     defaultTitle: "Naama Blue Hotel — Luxury on Naama Bay, Sharm El Sheikh",
     defaultDescription:

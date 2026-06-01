@@ -126,6 +126,56 @@ export const zh: Messages = {
     goHome: "返回首页",
     tryAgain: "重试",
   },
+  book: {
+    formTitle: "您的住宿",
+    formCheckIn: "入住",
+    formCheckOut: "退房",
+    formAdults: "成人",
+    formChildren: "儿童",
+    formRoom: "选择房间",
+    selectRoom: "选择房间",
+    formDetails: "您的信息",
+    firstName: "名",
+    lastName: "姓",
+    email: "电子邮件",
+    phone: "电话",
+    specialRequests: "特别要求",
+    specialRequestsPlaceholder: "机场接送、蜜月、饮食偏好……",
+    submitButton: "请求预订",
+    whyBookDirect: "为什么直订",
+    bookDirectReasons: ["最优价格保证", "退房前48小时免费取消", "赠送欢迎饮品", "优先选择房间", "直通礼宾部"],
+    needHelp: "需要帮助？我们的预订部全天24小时为您服务。",
+  },
+  faq: {
+    pageTitle: "需要了解",
+    pageSubtitle: "入住时间、机场接送、退房政策 — 住宿前需要了解的一切。",
+    questions: [
+      {
+        q: "入住和退房时间是什么时候？",
+        a: "入住时间从下午2:00开始，退房时间至中午12:00。根据房间可用性，可向礼宾部申请提前入住和延迟退房。",
+      },
+      {
+        q: "您提供机场接送吗？",
+        a: "是的 — 我们提供从沙姆沙伊赫国际机场(SSH)的私人接送服务。请通过礼宾部提前预订或在预订时添加。",
+      },
+      {
+        q: "您的取消政策是什么？",
+        a: "大多数房价包括入住前48小时的免费取消。特殊优惠房价可能有不同条款 — 这些在预订时会明确标注。",
+      },
+      {
+        q: "您接受哪些付款方式？",
+        a: "我们接受所有主要信用卡(Visa、Mastercard、Amex)、银行转账，以及欧元、美元和埃及镑现金支付。",
+      },
+      {
+        q: "早餐包括在内吗？",
+        a: "早餐包含在大多数房价中。半食宿和全包升级套餐可用 — 向我们的团队咨询最新套餐。",
+      },
+      {
+        q: "您欢迎儿童吗？",
+        a: "当然欢迎。我们的家庭套房为带孩子的住客而设计，6岁以下儿童在父母房间内免费住宿。",
+      },
+    ],
+  },
   seo: {
     defaultTitle: "Naama Blue Hotel — 沙姆沙伊赫 Naama Bay 奢华酒店",
     defaultDescription: "Naama Bay 热带奢华度假。海景房、无边泳池、潜水与沙漠之旅。",

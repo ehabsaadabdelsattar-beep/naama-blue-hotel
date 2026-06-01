@@ -3,6 +3,7 @@ import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
+import { useTranslations } from "@/i18n";
 
 export const Route = createFileRoute("/faq")({
   head: () => ({
@@ -28,13 +29,15 @@ const faqs = [
 ];
 
 function FAQPage() {
+  const t = useTranslations();
+  const faqs = t.faq.questions;
   const [open, setOpen] = useState<number | null>(0);
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <header className="pt-32 pb-12 px-5 lg:px-8 max-w-4xl mx-auto">
         <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">FAQ</span>
-        <h1 className="font-display text-5xl md:text-6xl mt-3 text-foreground">Good to know</h1>
+        <h1 className="font-display text-5xl md:text-6xl mt-3 text-foreground">{t.faq.pageTitle}</h1>
       </header>
 
       <section className="max-w-4xl mx-auto px-5 lg:px-8 pb-24">

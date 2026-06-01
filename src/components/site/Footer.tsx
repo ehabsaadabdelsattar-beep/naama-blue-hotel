@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Camera, Globe, MessageCircle, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Facebook, MessageCircle } from "lucide-react";
 import logo from "@/assets/logo.png";
 import { SITE } from "@/config/site";
 import { useTranslations } from "@/i18n";
@@ -10,8 +10,8 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   const socials = [
-    { Icon: Camera, href: SITE.social.instagram, label: "Instagram" },
-    { Icon: Globe, href: SITE.social.facebook, label: "Facebook" },
+    { Icon: Instagram, href: SITE.social.instagram, label: "Instagram" },
+    { Icon: Facebook, href: SITE.social.facebook, label: "Facebook" },
     { Icon: MessageCircle, href: buildWhatsAppUrl(), label: "WhatsApp" },
   ];
 
@@ -31,7 +31,7 @@ export function Footer() {
           <img
             src={logo}
             alt={SITE.name}
-            className="h-32 w-auto bg-white/95 rounded-lg p-2"
+            className="h-24 w-auto bg-white/95 rounded-lg p-2"
             loading="lazy"
             decoding="async"
           />
@@ -43,10 +43,10 @@ export function Footer() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="size-10 grid place-items-center rounded-full bg-white/10 hover:bg-accent transition"
+                className="size-12 grid place-items-center rounded-full bg-white/15 hover:bg-accent transition text-white"
                 aria-label={label}
               >
-                <Icon className="size-4" />
+                <Icon size={24} />
               </a>
             ))}
           </div>
@@ -79,7 +79,7 @@ export function Footer() {
               </a>
             </li>
             <li className="flex gap-3">
-              <MessageCircle className="size-4 mt-0.5 text-accent shrink-0" />
+              <MessageCircle size={16} className="mt-0.5 text-accent shrink-0" />
               <a
                 href={buildWhatsAppUrl()}
                 target="_blank"

@@ -36,50 +36,50 @@ function BookPage() {
       </header>
 
       <section className="px-5 lg:px-8 max-w-7xl mx-auto pb-24 grid lg:grid-cols-3 gap-10">
-        <form onSubmit={(e) => { e.preventDefault(); alert("Thank you! Our team will confirm your booking shortly."); }} className="lg:col-span-2 bg-card rounded-3xl p-7 md:p-10 shadow-card border border-border space-y-6">
-          <Fieldset legend="Your stay">
+        <form onSubmit={(e) => { e.preventDefault(); alert(t.book.submitButton); }} className="lg:col-span-2 bg-card rounded-3xl p-7 md:p-10 shadow-card border border-border space-y-6">
+          <Fieldset legend={t.book.formTitle}>
             <div className="grid sm:grid-cols-2 gap-4">
-              <Field label="Check-in" type="date" />
-              <Field label="Check-out" type="date" />
+              <Field label={t.book.formCheckIn} type="date" />
+              <Field label={t.book.formCheckOut} type="date" />
             </div>
             <div className="grid sm:grid-cols-3 gap-4 mt-4">
-              <Field label="Adults" type="number" defaultValue="2" />
-              <Field label="Children" type="number" defaultValue="0" />
+              <Field label={t.book.formAdults} type="number" defaultValue="2" />
+              <Field label={t.book.formChildren} type="number" defaultValue="0" />
               <label className="block">
-                <span className="text-xs uppercase tracking-[0.14em] font-semibold text-muted-foreground">Room</span>
+                <span className="text-xs uppercase tracking-[0.14em] font-semibold text-muted-foreground">{t.book.formRoom}</span>
                 <select value={selectedRoom} onChange={(e) => setSelectedRoom(e.target.value)} className="mt-2 w-full bg-secondary/60 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent">
-                  <option value="">Select a room</option>
+                  <option value="">{t.book.selectRoom}</option>
                   {rooms.map((r) => <option key={r.slug} value={r.slug}>{r.name} — ${r.price}/night</option>)}
                 </select>
               </label>
             </div>
           </Fieldset>
 
-          <Fieldset legend="Your details">
+          <Fieldset legend={t.book.formDetails}>
             <div className="grid sm:grid-cols-2 gap-4">
-              <Field label="First name" />
-              <Field label="Last name" />
-              <Field label="Email" type="email" />
-              <Field label="Phone" type="tel" />
+              <Field label={t.book.firstName} />
+              <Field label={t.book.lastName} />
+              <Field label={t.book.email} type="email" />
+              <Field label={t.book.phone} type="tel" />
             </div>
             <label className="block mt-4">
-              <span className="text-xs uppercase tracking-[0.14em] font-semibold text-muted-foreground">Special requests</span>
-              <textarea rows={4} className="mt-2 w-full bg-secondary/60 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent" placeholder="Airport transfer, anniversary, dietary preferences…" />
+              <span className="text-xs uppercase tracking-[0.14em] font-semibold text-muted-foreground">{t.book.specialRequests}</span>
+              <textarea rows={4} className="mt-2 w-full bg-secondary/60 border border-border rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent" placeholder={t.book.specialRequestsPlaceholder} />
             </label>
           </Fieldset>
 
-          <button className="w-full rounded-full bg-accent text-accent-foreground py-4 text-sm font-semibold hover:brightness-110 transition shadow-card">Request booking</button>
+          <button className="w-full rounded-full bg-accent text-accent-foreground py-4 text-sm font-semibold hover:brightness-110 transition shadow-card">{t.book.submitButton}</button>
         </form>
 
         <aside className="lg:col-span-1 bg-[var(--ink)] text-white rounded-3xl p-7 shadow-card h-fit lg:sticky lg:top-28">
-          <h3 className="font-display text-2xl">Why book direct</h3>
+          <h3 className="font-display text-2xl">{t.book.whyBookDirect}</h3>
           <ul className="mt-5 space-y-3 text-sm text-white/85">
-            {["Best rate guaranteed", "Free cancellation up to 48h", "Complimentary welcome drink", "Priority room selection", "Direct line to our concierge"].map((p) => (
+            {t.book.bookDirectReasons.map((p) => (
               <li key={p} className="flex gap-3"><CheckCircle2 className="size-4 text-[var(--coral-light)] mt-0.5 shrink-0" /> {p}</li>
             ))}
           </ul>
           <div className="border-t border-white/15 mt-7 pt-6 text-sm text-white/70">
-            Need help? Our reservation desk is available 24/7.<br />
+            {t.book.needHelp}<br />
             <a href="tel:+201000000000" className="text-[var(--coral-light)] font-semibold">+20 100 000 0000</a>
           </div>
         </aside>
