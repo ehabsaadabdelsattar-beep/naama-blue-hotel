@@ -10,8 +10,8 @@
 
 ```bash
 npm install
-npm run build
-npm run preview
+npm run build:vercel
+npx vite preview
 ```
 
 ## Deployment to Vercel
@@ -43,9 +43,13 @@ VITE_API_URL=https://your-api-url.com
 
 ## Build Settings
 
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
+This project uses **TanStack Start + Nitro** (not a plain static `dist/` folder).
+
+- **Build Command**: `npm run build:vercel`
+- **Output Directory**: leave empty (Vercel uses `.vercel/output` from Nitro automatically)
 - **Install Command**: `npm ci`
+
+Do **not** set Output Directory to `dist` in the Vercel dashboard — that deploys SSR HTML without CSS/JS.
 
 ## Deployment Status
 
@@ -55,7 +59,17 @@ After deployment, you'll get:
 
 ## Troubleshooting
 
-If deployment fails:
+### Site shows plain HTML (no CSS, broken images)
+
+Cause: Vercel was serving the wrong folder (`dist`) instead of the Nitro build (`.vercel/output`).
+
+Fix:
+
+1. Use build command `npm run build:vercel` (see `vercel.json`)
+2. In Vercel → Project → Settings → Build & Development → **clear** “Output Directory” if it says `dist`
+3. Redeploy
+
+### Other deployment failures
 
 1. Check build logs in Vercel Dashboard
 2. Verify `package.json` scripts are correct
