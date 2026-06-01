@@ -1,29 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
+import { parseBookSearch } from "@/lib/booking-search";
+import { pageMeta } from "@/lib/seo";
 import { rooms } from "@/lib/rooms";
 import { CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute("/book")({
-  head: () => ({
-    meta: [
-      { title: "Book Your Stay — Naama Blue Hotel" },
-      { name: "description", content: "Reserve your room at Naama Blue Hotel, Sharm El Sheikh. Best rate guaranteed when booking direct." },
-      { property: "og:title", content: "Book — Naama Blue Hotel" },
-      { property: "og:description", content: "Reserve your stay on Naama Bay." },
-      { property: "og:url", content: "/book" },
-    ],
-    links: [{ rel: "canonical", href: "/book" }],
-  }),
-  validateSearch: (search) => {
-    return {
-      room: (search.room as string | undefined),
-      offer: (search.offer as string | undefined),
-      price: (search.price as string | undefined),
-      roomName: (search.roomName as string | undefined),
-    };
-  },
+  head: () =>
+    pageMeta({
+      title: "Book Your Stay",
+      description:
+        "Reserve your room at Naama Blue Hotel, Sharm El Sheikh. Best rate guaranteed when booking direct.",
+      path: "/book",
+    }),
+  validateSearch: (search) => parseBookSearch(search as Record<string, unknown>),
   component: BookPage,
 });
 

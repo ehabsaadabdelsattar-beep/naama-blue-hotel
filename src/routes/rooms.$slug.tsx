@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
-import { BookingBar } from "@/components/site/BookingBar";
+import { bookSearch } from "@/lib/booking-search";
 import { getRoom, rooms } from "@/lib/rooms";
 import { buildWhatsAppUrl } from "@/components/site/FloatingWhatsApp";
 import { Users, BedDouble, Maximize, Eye, Check, ArrowRight, MessageCircle } from "lucide-react";
@@ -97,7 +97,7 @@ function RoomDetail() {
             >
               <MessageCircle className="size-4" /> Book on WhatsApp
             </a>
-            <Link to="/book" search={{ room: room.slug, price: room.price.toString(), roomName: room.name }} className="mt-3 w-full inline-flex justify-center rounded-full bg-accent text-accent-foreground px-6 py-3.5 text-sm font-semibold hover:brightness-110 transition">
+            <Link to="/book" search={bookSearch({ room: room.slug, price: room.price.toString(), roomName: room.name })} className="mt-3 w-full inline-flex justify-center rounded-full bg-accent text-accent-foreground px-6 py-3.5 text-sm font-semibold hover:brightness-110 transition">
               Reserve via form
             </Link>
             <p className="text-xs text-muted-foreground text-center mt-3">Free cancellation up to 48h before arrival</p>

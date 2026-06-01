@@ -1,20 +1,40 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
 
-const BASE_URL = "";
+import { getServerConfig } from "@/lib/config.server";
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
       GET: async () => {
-        const paths = ["/", "/rooms", "/rooms/deluxe-room", "/rooms/twin-room", "/rooms/family-suite", "/experience", "/gallery", "/offers", "/about", "/contact", "/faq", "/book"];
+        const { siteUrl } = getServerConfig();
+        const base = siteUrl.replace(/\/$/, "");
+        const paths = [
+          "/",
+          "/rooms",
+          "/rooms/deluxe-room",
+          "/rooms/twin-room",
+          "/rooms/family-suite",
+          "/experience",
+          "/gallery",
+          "/offers",
+          "/about",
+          "/contact",
+          "/faq",
+          "/book",
+        ];
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,
           `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
-          ...paths.map((p) => `  <url><loc>${BASE_URL}${p}</loc><changefreq>weekly</changefreq></url>`),
+          ...paths.map(
+            (p) =>
+              `  <url><loc>${base}${p}</loc><changefreq>weekly</changefreq><priority>${p === "/" ? "1.0" : "0.8"}</priority></url>`,
+          ),
           `</urlset>`,
         ].join("\n");
-        return new Response(xml, { headers: { "Content-Type": "application/xml", "Cache-Control": "public, max-age=3600" } });
+        return new Response(xml, {
+          headers: { "Content-Type": "application/xml", "Cache-Control": "public, max-age=3600" },
+        });
       },
     },
   },

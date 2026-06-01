@@ -2,6 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { BookingBar } from "@/components/site/BookingBar";
+import { SiteImage } from "@/components/site/SiteImage";
+import { bookSearch } from "@/lib/booking-search";
 import { rooms } from "@/lib/rooms";
 import heroBay from "@/assets/hero-bay.jpg";
 import pool from "@/assets/pool.jpg";
@@ -36,11 +38,11 @@ function HomePage() {
 
       {/* HERO */}
       <section className="relative h-[100svh] min-h-[640px] w-full">
-        <img
+        <SiteImage
           src={heroBay}
           alt="Naama Bay at golden hour"
           className="absolute inset-0 w-full h-full object-cover animate-kenburns"
-          fetchPriority="high"
+          priority
         />
         <div className="absolute inset-0 bg-hero-overlay" />
 
@@ -55,7 +57,7 @@ function HomePage() {
             Luxury comfort, vibrant nightlife, and unforgettable Red Sea experiences — wrapped in tropical blue.
           </p>
           <div className="mt-9 flex flex-wrap gap-3 justify-center animate-fade-up">
-            <Link to="/book" className="rounded-full bg-accent text-accent-foreground px-7 py-3.5 text-sm font-semibold tracking-wide hover:brightness-110 transition shadow-luxe">
+            <Link to="/book" search={bookSearch()} className="rounded-full bg-accent text-accent-foreground px-7 py-3.5 text-sm font-semibold tracking-wide hover:brightness-110 transition shadow-luxe">
               Book Your Stay
             </Link>
             <Link to="/rooms" className="rounded-full border border-white/40 text-white px-7 py-3.5 text-sm font-semibold tracking-wide hover:bg-white/10 transition">
@@ -261,7 +263,7 @@ function HomePage() {
             Your Sharm El Sheikh escape <em className="not-italic text-[var(--coral-light)]">starts here</em>
           </h2>
           <p className="mt-5 text-white/80 text-lg">Reserve your dates and let the Red Sea do the rest.</p>
-          <Link to="/book" className="mt-8 inline-flex rounded-full bg-accent text-accent-foreground px-8 py-4 text-sm font-semibold tracking-wide hover:brightness-110 transition shadow-luxe">
+          <Link to="/book" search={bookSearch()} className="mt-8 inline-flex rounded-full bg-accent text-accent-foreground px-8 py-4 text-sm font-semibold tracking-wide hover:brightness-110 transition shadow-luxe">
             Book Your Stay
           </Link>
         </div>

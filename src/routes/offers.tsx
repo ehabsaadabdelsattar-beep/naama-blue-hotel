@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { bookSearch } from "@/lib/booking-search";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import pool from "@/assets/pool.jpg";
@@ -48,7 +49,7 @@ function OffersPage() {
               <p className="text-sm text-muted-foreground mt-2 flex-1">{o.text}</p>
               <div className="mt-5 flex items-center justify-between">
                 <span><span className="text-xs text-muted-foreground">from </span><span className="font-display text-xl">${o.from}</span></span>
-                <Link to="/book" search={{ offer: o.title.toLowerCase().replace(/\s+/g, '-'), price: o.from.toString() }} className="text-sm font-semibold text-accent hover:text-accent/80 transition">Book →</Link>
+                <Link to="/book" search={bookSearch({ offer: o.title.toLowerCase().replace(/\s+/g, "-"), price: o.from.toString() })} className="text-sm font-semibold text-accent hover:text-accent/80 transition">Book →</Link>
               </div>
             </div>
           </article>

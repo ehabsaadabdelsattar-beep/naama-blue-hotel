@@ -1,10 +1,11 @@
 import { MessageCircle } from "lucide-react";
+import { SITE } from "@/config/site";
 
-export const WHATSAPP_NUMBER = "201555672606";
-export const WHATSAPP_DISPLAY = "+20 1555 672 606";
+export const WHATSAPP_NUMBER = SITE.contact.whatsappE164;
+export const WHATSAPP_DISPLAY = SITE.contact.whatsapp;
 
 export function buildWhatsAppUrl(message?: string) {
-  const text = message ?? "Hello Naama Blue Hotel, I'd like to make a reservation.";
+  const text = message ?? `Hello ${SITE.name}, I'd like to make a reservation.`;
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 }
 

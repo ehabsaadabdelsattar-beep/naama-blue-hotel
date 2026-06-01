@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { bookSearch } from "@/lib/booking-search";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { rooms } from "@/lib/rooms";
@@ -50,7 +51,7 @@ function RoomsPage() {
                   <span className="text-3xl font-display">${r.price}</span>
                   <span className="text-sm text-muted-foreground"> / night</span>
                 </span>
-                <Link to="/book" search={{ room: r.slug, price: r.price.toString(), roomName: r.name }} className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-6 py-3 text-sm font-semibold hover:brightness-110 transition">
+                <Link to="/book" search={bookSearch({ room: r.slug, price: r.price.toString(), roomName: r.name })} className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-6 py-3 text-sm font-semibold hover:brightness-110 transition">
                   Book Now <ArrowRight className="size-4" />
                 </Link>
               </div>
