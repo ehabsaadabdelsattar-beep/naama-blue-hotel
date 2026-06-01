@@ -2,6 +2,10 @@ export const en = {
   brand: {
     name: "Naama Blue Hotel",
     tagline: "Luxury on Naama Bay, Sharm El Sheikh",
+    location: "Naama Bay • Sharm El Sheikh",
+  },
+  language: {
+    label: "Language",
   },
   nav: {
     home: "Home",
@@ -11,6 +15,7 @@ export const en = {
     offers: "Offers",
     about: "About",
     contact: "Contact",
+    faq: "FAQ",
     bookNow: "Book Now",
     menuToggle: "Toggle menu",
   },
@@ -22,6 +27,8 @@ export const en = {
     search: "Search",
     guestOptions: ["1 Adult", "2 Adults", "3 Adults", "4 Adults"],
     roomOptions: ["1 Room", "2 Rooms", "3 Rooms"],
+    perNight: "/ night",
+    details: "Details",
   },
   footer: {
     tagline:
@@ -31,7 +38,92 @@ export const en = {
     specialOffers: "Special Offers",
     aboutUs: "About Us",
     contact: "Contact",
+    newsletter: "Newsletter",
+    newsletterHint: "Seasonal offers and Red Sea stories, monthly.",
+    emailPlaceholder: "your@email.com",
+    join: "Join",
+    locationLine: "Naama Bay · Sharm El Sheikh · Egypt",
     rights: (year: number) => `© ${year} Naama Blue Hotel. All rights reserved.`,
+  },
+  home: {
+    heroTitle: "Escape to the heart of",
+    heroHighlight: "Naama Bay",
+    heroSubtitle:
+      "Luxury comfort, vibrant nightlife, and unforgettable Red Sea experiences — wrapped in tropical blue.",
+    bookStay: "Book Your Stay",
+    exploreRooms: "Explore Rooms",
+    welcome: "Welcome",
+    introTitle: "A tropical address on the Red Sea",
+    introBody:
+      "Naama Blue Hotel is a modern hideaway designed around the bay — sun on the water, palms over the pool, and a promenade of cafés just outside the door. Stay with us for the rhythm of Sharm: slow mornings, vivid reefs, golden sunsets and electric nights.",
+    ourStory: "Our story",
+    features: {
+      location: { title: "Prime Location", text: "Steps from Naama Bay beach & promenade" },
+      pool: { title: "Pool & Sea", text: "Infinity pool overlooking the Red Sea" },
+      wifi: { title: "Fast WiFi", text: "Fibre across rooms, lobby and pool" },
+      service: { title: "24/7 Service", text: "Concierge, room service & care" },
+    },
+    stay: "Stay",
+    featuredRooms: "Featured Rooms",
+    viewAllRooms: "View all rooms",
+    experienceLabel: "Experience",
+    experienceTitle: "Naama Bay, in every shade of blue",
+    experienceSubtitle:
+      "From coral gardens at dawn to neon-lit promenades after dark, Sharm unfolds right outside our door.",
+    experiences: {
+      diving: { title: "Diving & Snorkeling", text: "World-class reefs minutes from the marina." },
+      nightlife: { title: "Naama Nightlife", text: "Promenade cafés, lounges & live music." },
+      safari: { title: "Desert Safari", text: "Quad bikes, Bedouin tea & Sinai stars." },
+    },
+    amenitiesLabel: "Amenities",
+    amenitiesTitle: "Everything you need, nothing you don't",
+    amenityLabels: ["Swimming Pool", "Restaurant", "Airport Transfer", "Free WiFi", "Air Conditioning", "Housekeeping"],
+    guestsLabel: "Guests",
+    testimonialsTitle: "Loved by travellers",
+    testimonials: [
+      { name: "Sara M.", country: "United Kingdom", text: "The view from our balcony was unreal — and the staff treated us like family from the moment we arrived." },
+      { name: "Lukas K.", country: "Germany", text: "Perfect base for diving in Sharm. Steps from the bay, with the best breakfast spread we've had in Egypt." },
+      { name: "Amira H.", country: "UAE", text: "Tropical, calm, beautifully designed. We came for three nights and extended to seven." },
+    ],
+    moments: "Moments",
+    insideHotel: "Inside the hotel",
+    fullGallery: "Full gallery",
+    ctaTitle: "Your Sharm El Sheikh escape",
+    ctaHighlight: "starts here",
+    ctaBody: "Reserve your dates and let the Red Sea do the rest.",
+  },
+  roomsData: {
+    "deluxe-room": {
+      name: "Deluxe Sea View",
+      tagline: "Wake to the Red Sea, sleep to the waves.",
+      description:
+        "A refined retreat with floor-to-ceiling windows opening onto the bay. Plush king bed, marble bath, and a private balcony for sunrise coffee.",
+      amenities: ["Balcony", "Rain shower", "Smart TV", "Espresso machine", "Premium linens"],
+    },
+    "twin-room": {
+      name: "Twin Bay Room",
+      tagline: "Bright, breezy, made for explorers.",
+      description:
+        "Two crisp twin beds, an airy interior, and a balcony framing the marina. Ideal for friends and divers sharing a Sharm adventure.",
+      amenities: ["Balcony", "Work desk", "Smart TV", "Mini bar", "Daily housekeeping"],
+    },
+    "family-suite": {
+      name: "Family Suite",
+      tagline: "Space for everyone, memories for all.",
+      description:
+        "A spacious two-bedroom suite with a lounge area and pool-side terrace. Designed around family rhythms — early swims, slow breakfasts, late games.",
+      amenities: ["Lounge area", "Pool terrace", "2 bathrooms", "Smart TV", "Kids welcome kit"],
+    },
+  },
+  pages: {
+    rooms: { title: "Rooms & Suites", subtitle: "Sea views, calm interiors, and the Red Sea just steps away." },
+    book: { title: "Book your stay", subtitle: "Direct bookings unlock our best rates, free cancellation up to 48 hours before arrival, and a welcome drink on the house." },
+    about: { title: "A hotel built around the bay we love", subtitle: "Our story, vision and the team behind Naama Blue Hotel on the Red Sea." },
+    contact: { title: "Get in touch", subtitle: "We're here to help you plan the perfect Sharm El Sheikh stay." },
+    experience: { title: "Experience Naama Bay", subtitle: "Diving, desert, nightlife and the best of the Red Sea." },
+    gallery: { title: "Gallery", subtitle: "Moments from Naama Blue Hotel and the bay beyond." },
+    offers: { title: "Special Offers", subtitle: "Seasonal packages and exclusive direct-booking deals." },
+    faq: { title: "Frequently Asked Questions", subtitle: "Everything you need to know before you arrive." },
   },
   errors: {
     notFoundTitle: "Page not found",

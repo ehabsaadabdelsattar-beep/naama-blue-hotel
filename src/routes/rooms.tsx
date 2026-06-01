@@ -2,7 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { bookSearch } from "@/lib/booking-search";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
-import { rooms } from "@/lib/rooms";
+import { useTranslations } from "@/i18n";
+import { getLocalizedRooms } from "@/lib/rooms";
 import { Users, BedDouble, Maximize, Eye, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/rooms")({
@@ -20,13 +21,16 @@ export const Route = createFileRoute("/rooms")({
 });
 
 function RoomsPage() {
+  const t = useTranslations();
+  const rooms = getLocalizedRooms(t);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
       <header className="pt-32 pb-12 px-5 lg:px-8 max-w-7xl mx-auto">
-        <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">Stay</span>
-        <h1 className="font-display text-5xl md:text-6xl mt-3 text-foreground">Rooms & Suites</h1>
-        <p className="mt-4 max-w-2xl text-muted-foreground text-lg">Soft linens, sea air, and a balcony for every guest. Choose the space that matches the trip you have in mind.</p>
+        <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">{t.home.stay}</span>
+        <h1 className="font-display text-5xl md:text-6xl mt-3 text-foreground">{t.pages.rooms.title}</h1>
+        <p className="mt-4 max-w-2xl text-muted-foreground text-lg">{t.pages.rooms.subtitle}</p>
       </header>
 
       <section className="px-5 lg:px-8 max-w-7xl mx-auto pb-24 space-y-10">
@@ -49,10 +53,10 @@ function RoomsPage() {
               <div className="mt-7 flex items-center justify-between flex-wrap gap-4">
                 <span className="text-foreground">
                   <span className="text-3xl font-display">${r.price}</span>
-                  <span className="text-sm text-muted-foreground"> / night</span>
+                  <span className="text-sm text-muted-foreground">{t.booking.perNight}</span>
                 </span>
                 <Link to="/book" search={bookSearch({ room: r.slug, price: r.price.toString(), roomName: r.name })} className="inline-flex items-center gap-2 rounded-full bg-accent text-accent-foreground px-6 py-3 text-sm font-semibold hover:brightness-110 transition">
-                  Book Now <ArrowRight className="size-4" />
+                  {t.nav.bookNow} <ArrowRight className="size-4" />
                 </Link>
               </div>
             </div>

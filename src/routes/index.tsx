@@ -3,8 +3,9 @@ import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { BookingBar } from "@/components/site/BookingBar";
 import { SiteImage } from "@/components/site/SiteImage";
+import { useTranslations } from "@/i18n";
 import { bookSearch } from "@/lib/booking-search";
-import { rooms } from "@/lib/rooms";
+import { getLocalizedRooms } from "@/lib/rooms";
 import heroBay from "@/assets/hero-bay.jpg";
 import pool from "@/assets/pool.jpg";
 import diving from "@/assets/exp-diving.jpg";
@@ -32,6 +33,21 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
+  const t = useTranslations();
+  const rooms = getLocalizedRooms(t);
+  const featureItems = [
+    { Icon: MapPin, ...t.home.features.location },
+    { Icon: Waves, ...t.home.features.pool },
+    { Icon: Wifi, ...t.home.features.wifi },
+    { Icon: ConciergeBell, ...t.home.features.service },
+  ] as const;
+  const experienceCards = [
+    { img: diving, ...t.home.experiences.diving, span: "lg:col-span-7 lg:row-span-2 h-[440px]" },
+    { img: nightlife, ...t.home.experiences.nightlife, span: "lg:col-span-5 h-52" },
+    { img: safari, ...t.home.experiences.safari, span: "lg:col-span-5 h-52" },
+  ] as const;
+  const amenityIcons = [Waves, UtensilsCrossed, Plane, Wifi, Snowflake, Sparkles] as const;
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar transparentOnTop />
@@ -48,20 +64,21 @@ function HomePage() {
 
         <div className="absolute inset-0 h-full flex flex-col items-center justify-center text-center px-5 z-10">
           <span className="text-white/80 text-xs tracking-[0.4em] uppercase mb-6 animate-fade-up">
-            Naama Bay • Sharm El Sheikh
+            {t.brand.location}
           </span>
           <h1 className="font-display text-white text-5xl md:text-7xl lg:text-8xl leading-[1.05] max-w-5xl animate-fade-up">
-            Escape to the heart of <em className="not-italic text-[var(--coral-light)]">Naama Bay</em>
+            {t.home.heroTitle}{" "}
+            <em className="not-italic text-[var(--coral-light)]">{t.home.heroHighlight}</em>
           </h1>
           <p className="mt-6 text-white/85 text-lg md:text-xl max-w-2xl animate-fade-up">
-            Luxury comfort, vibrant nightlife, and unforgettable Red Sea experiences — wrapped in tropical blue.
+            {t.home.heroSubtitle}
           </p>
           <div className="mt-9 flex flex-wrap gap-3 justify-center animate-fade-up">
             <Link to="/book" search={bookSearch()} className="rounded-full bg-accent text-accent-foreground px-7 py-3.5 text-sm font-semibold tracking-wide hover:brightness-110 transition shadow-luxe">
-              Book Your Stay
+              {t.home.bookStay}
             </Link>
             <Link to="/rooms" className="rounded-full border border-white/40 text-white px-7 py-3.5 text-sm font-semibold tracking-wide hover:bg-white/10 transition">
-              Explore Rooms
+              {t.home.exploreRooms}
             </Link>
           </div>
         </div>
@@ -77,24 +94,19 @@ function HomePage() {
       <section className="pt-32 pb-20 px-5 lg:px-8 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">Welcome</span>
+            <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">{t.home.welcome}</span>
             <h2 className="font-display text-4xl md:text-5xl mt-3 text-foreground leading-tight">
-              A tropical address on the Red Sea
+              {t.home.introTitle}
             </h2>
             <p className="mt-5 text-muted-foreground text-lg leading-relaxed">
-              Naama Blue Hotel is a modern hideaway designed around the bay — sun on the water, palms over the pool, and a promenade of cafés just outside the door. Stay with us for the rhythm of Sharm: slow mornings, vivid reefs, golden sunsets and electric nights.
+              {t.home.introBody}
             </p>
             <Link to="/about" className="inline-flex items-center gap-2 mt-7 text-sm font-semibold text-foreground hover:text-accent transition">
-              Our story <ArrowRight className="size-4" />
+              {t.home.ourStory} <ArrowRight className="size-4" />
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            {[
-              { Icon: MapPin, title: "Prime Location", text: "Steps from Naama Bay beach & promenade" },
-              { Icon: Waves, title: "Pool & Sea", text: "Infinity pool overlooking the Red Sea" },
-              { Icon: Wifi, title: "Fast WiFi", text: "Fibre across rooms, lobby and pool" },
-              { Icon: ConciergeBell, title: "24/7 Service", text: "Concierge, room service & care" },
-            ].map(({ Icon, title, text }) => (
+            {featureItems.map(({ Icon, title, text }) => (
               <div key={title} className="glass rounded-2xl p-5 shadow-card hover:-translate-y-1 transition">
                 <div className="size-11 rounded-xl bg-accent/15 text-accent grid place-items-center mb-4">
                   <Icon className="size-5" />
@@ -112,11 +124,11 @@ function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap items-end justify-between gap-4 mb-12">
             <div>
-              <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">Stay</span>
-              <h2 className="font-display text-4xl md:text-5xl mt-3 text-foreground">Featured Rooms</h2>
+              <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">{t.home.stay}</span>
+              <h2 className="font-display text-4xl md:text-5xl mt-3 text-foreground">{t.home.featuredRooms}</h2>
             </div>
             <Link to="/rooms" className="text-sm font-semibold text-foreground hover:text-accent inline-flex items-center gap-2">
-              View all rooms <ArrowRight className="size-4" />
+              {t.home.viewAllRooms} <ArrowRight className="size-4" />
             </Link>
           </div>
 
@@ -140,10 +152,10 @@ function HomePage() {
                   <div className="mt-5 flex items-center justify-between">
                     <span className="text-foreground">
                       <span className="text-2xl font-display">${r.price}</span>
-                      <span className="text-sm text-muted-foreground"> / night</span>
+                      <span className="text-sm text-muted-foreground">{t.booking.perNight}</span>
                     </span>
                     <span className="text-sm font-semibold text-accent inline-flex items-center gap-1 group-hover:gap-2 transition-all">
-                      Details <ArrowRight className="size-4" />
+                      {t.booking.details} <ArrowRight className="size-4" />
                     </span>
                   </div>
                 </div>
@@ -156,17 +168,13 @@ function HomePage() {
       {/* EXPERIENCE NAAMA BAY */}
       <section className="py-24 px-5 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto">
-          <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">Experience</span>
-          <h2 className="font-display text-4xl md:text-5xl mt-3 text-foreground">Naama Bay, in every shade of blue</h2>
-          <p className="mt-4 text-muted-foreground">From coral gardens at dawn to neon-lit promenades after dark, Sharm unfolds right outside our door.</p>
+          <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">{t.home.experienceLabel}</span>
+          <h2 className="font-display text-4xl md:text-5xl mt-3 text-foreground">{t.home.experienceTitle}</h2>
+          <p className="mt-4 text-muted-foreground">{t.home.experienceSubtitle}</p>
         </div>
 
         <div className="mt-14 grid lg:grid-cols-12 gap-5">
-          {[
-            { img: diving, title: "Diving & Snorkeling", text: "World-class reefs minutes from the marina.", span: "lg:col-span-7 lg:row-span-2 h-[440px]" },
-            { img: nightlife, title: "Naama Nightlife", text: "Promenade cafés, lounges & live music.", span: "lg:col-span-5 h-52" },
-            { img: safari, title: "Desert Safari", text: "Quad bikes, Bedouin tea & Sinai stars.", span: "lg:col-span-5 h-52" },
-          ].map((c) => (
+          {experienceCards.map((c) => (
             <Link to="/experience" key={c.title} className={`relative rounded-3xl overflow-hidden group hover-zoom shadow-card ${c.span}`}>
               <img src={c.img} alt={c.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
@@ -183,23 +191,16 @@ function HomePage() {
       <section className="py-20 px-5 lg:px-8 bg-[var(--ink)] text-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-2xl mx-auto">
-            <span className="text-[var(--coral-light)] text-xs tracking-[0.3em] uppercase font-semibold">Amenities</span>
-            <h2 className="font-display text-4xl md:text-5xl mt-3">Everything you need, nothing you don't</h2>
+            <span className="text-[var(--coral-light)] text-xs tracking-[0.3em] uppercase font-semibold">{t.home.amenitiesLabel}</span>
+            <h2 className="font-display text-4xl md:text-5xl mt-3">{t.home.amenitiesTitle}</h2>
           </div>
           <div className="mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {[
-              { Icon: Waves, label: "Swimming Pool" },
-              { Icon: UtensilsCrossed, label: "Restaurant" },
-              { Icon: Plane, label: "Airport Transfer" },
-              { Icon: Wifi, label: "Free WiFi" },
-              { Icon: Snowflake, label: "Air Conditioning" },
-              { Icon: Sparkles, label: "Housekeeping" },
-            ].map(({ Icon, label }) => (
-              <div key={label} className="text-center">
+            {amenityIcons.map((Icon, i) => (
+              <div key={t.home.amenityLabels[i]} className="text-center">
                 <div className="mx-auto size-16 rounded-2xl glass-dark grid place-items-center mb-3 text-[var(--coral-light)]">
                   <Icon className="size-7" />
                 </div>
-                <p className="text-sm text-white/80">{label}</p>
+                <p className="text-sm text-white/80">{t.home.amenityLabels[i]}</p>
               </div>
             ))}
           </div>
@@ -209,23 +210,19 @@ function HomePage() {
       {/* TESTIMONIALS */}
       <section className="py-24 px-5 lg:px-8 max-w-7xl mx-auto">
         <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">Guests</span>
-          <h2 className="font-display text-4xl md:text-5xl mt-3 text-foreground">Loved by travellers</h2>
+          <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">{t.home.guestsLabel}</span>
+          <h2 className="font-display text-4xl md:text-5xl mt-3 text-foreground">{t.home.testimonialsTitle}</h2>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { name: "Sara M.", country: "United Kingdom", text: "The view from our balcony was unreal — and the staff treated us like family from the moment we arrived." },
-            { name: "Lukas K.", country: "Germany", text: "Perfect base for diving in Sharm. Steps from the bay, with the best breakfast spread we’ve had in Egypt." },
-            { name: "Amira H.", country: "UAE", text: "Tropical, calm, beautifully designed. We came for three nights and extended to seven." },
-          ].map((t) => (
-            <figure key={t.name} className="bg-card rounded-3xl p-7 shadow-card border border-border">
+          {t.home.testimonials.map((item) => (
+            <figure key={item.name} className="bg-card rounded-3xl p-7 shadow-card border border-border">
               <div className="flex gap-1 text-accent mb-4">
                 {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="size-4 fill-current" />)}
               </div>
-              <blockquote className="text-foreground/90 leading-relaxed">"{t.text}"</blockquote>
+              <blockquote className="text-foreground/90 leading-relaxed">&ldquo;{item.text}&rdquo;</blockquote>
               <figcaption className="mt-5 text-sm">
-                <span className="font-semibold text-foreground">{t.name}</span>
-                <span className="text-muted-foreground"> · {t.country}</span>
+                <span className="font-semibold text-foreground">{item.name}</span>
+                <span className="text-muted-foreground"> · {item.country}</span>
               </figcaption>
             </figure>
           ))}
@@ -237,11 +234,11 @@ function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-wrap items-end justify-between gap-4 mb-10">
             <div>
-              <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">Moments</span>
-              <h2 className="font-display text-4xl md:text-5xl mt-3 text-foreground">Inside the hotel</h2>
+              <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">{t.home.moments}</span>
+              <h2 className="font-display text-4xl md:text-5xl mt-3 text-foreground">{t.home.insideHotel}</h2>
             </div>
             <Link to="/gallery" className="text-sm font-semibold text-foreground hover:text-accent inline-flex items-center gap-2">
-              Full gallery <ArrowRight className="size-4" />
+              {t.home.fullGallery} <ArrowRight className="size-4" />
             </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -260,11 +257,12 @@ function HomePage() {
         <div className="absolute inset-0 bg-[var(--ink)]/70" />
         <div className="relative z-10 max-w-3xl mx-auto text-center text-white">
           <h2 className="font-display text-4xl md:text-6xl leading-tight">
-            Your Sharm El Sheikh escape <em className="not-italic text-[var(--coral-light)]">starts here</em>
+            {t.home.ctaTitle}{" "}
+            <em className="not-italic text-[var(--coral-light)]">{t.home.ctaHighlight}</em>
           </h2>
-          <p className="mt-5 text-white/80 text-lg">Reserve your dates and let the Red Sea do the rest.</p>
+          <p className="mt-5 text-white/80 text-lg">{t.home.ctaBody}</p>
           <Link to="/book" search={bookSearch()} className="mt-8 inline-flex rounded-full bg-accent text-accent-foreground px-8 py-4 text-sm font-semibold tracking-wide hover:brightness-110 transition shadow-luxe">
-            Book Your Stay
+            {t.home.bookStay}
           </Link>
         </div>
       </section>

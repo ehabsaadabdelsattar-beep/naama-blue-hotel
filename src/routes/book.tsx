@@ -3,7 +3,8 @@ import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { parseBookSearch } from "@/lib/booking-search";
 import { pageMeta } from "@/lib/seo";
-import { rooms } from "@/lib/rooms";
+import { useTranslations } from "@/i18n";
+import { getLocalizedRooms } from "@/lib/rooms";
 import { CheckCircle2 } from "lucide-react";
 import { useState } from "react";
 
@@ -20,6 +21,8 @@ export const Route = createFileRoute("/book")({
 });
 
 function BookPage() {
+  const t = useTranslations();
+  const rooms = getLocalizedRooms(t);
   const search = Route.useSearch();
   const [selectedRoom, setSelectedRoom] = useState(search.room || "");
 
@@ -27,9 +30,9 @@ function BookPage() {
     <div className="min-h-screen bg-background">
       <Navbar />
       <header className="pt-32 pb-10 px-5 lg:px-8 max-w-7xl mx-auto">
-        <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">Reservation</span>
-        <h1 className="font-display text-5xl md:text-6xl mt-3 text-foreground">Book your stay</h1>
-        <p className="mt-4 max-w-2xl text-muted-foreground text-lg">Direct bookings unlock our best rates, free cancellation up to 48 hours before arrival, and a welcome drink on the house.</p>
+        <span className="text-accent text-xs tracking-[0.3em] uppercase font-semibold">{t.nav.bookNow}</span>
+        <h1 className="font-display text-5xl md:text-6xl mt-3 text-foreground">{t.pages.book.title}</h1>
+        <p className="mt-4 max-w-2xl text-muted-foreground text-lg">{t.pages.book.subtitle}</p>
       </header>
 
       <section className="px-5 lg:px-8 max-w-7xl mx-auto pb-24 grid lg:grid-cols-3 gap-10">

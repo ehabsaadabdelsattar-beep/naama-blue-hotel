@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { LanguageSwitcher } from "@/components/site/LanguageSwitcher";
 import { useTranslations } from "@/i18n";
 import { bookSearch } from "@/lib/booking-search";
 import { SITE } from "@/config/site";
@@ -58,6 +59,9 @@ export function Navbar({ transparentOnTop = false }: { transparentOnTop?: boolea
           </nav>
 
           <div className="flex items-center gap-3">
+            <div className="hidden lg:block">
+              <LanguageSwitcher light={!solid} />
+            </div>
             <button
               onClick={() => setOpen((v) => !v)}
               className={`lg:hidden p-2 rounded-md ${solid ? "text-foreground" : "text-white"}`}
@@ -71,6 +75,9 @@ export function Navbar({ transparentOnTop = false }: { transparentOnTop?: boolea
         {open && (
           <div className="lg:hidden bg-background border-t border-border animate-fade-up">
             <div className="px-5 py-4 flex flex-col gap-1">
+              <div className="pb-3 mb-2 border-b border-border">
+                <LanguageSwitcher />
+              </div>
               {navRoutes.map((l) => (
                 <Link
                   key={l.to}

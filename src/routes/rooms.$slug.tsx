@@ -2,26 +2,30 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { Navbar } from "@/components/site/Navbar";
 import { Footer } from "@/components/site/Footer";
 import { bookSearch } from "@/lib/booking-search";
-import { getRoom, rooms } from "@/lib/rooms";
+import { useTranslations } from "@/i18n";
+import { en } from "@/i18n/locales/en";
+import { getLocalizedRooms, getRoom, isRoomSlug } from "@/lib/rooms";
 import { buildWhatsAppUrl } from "@/components/site/FloatingWhatsApp";
 import { Users, BedDouble, Maximize, Eye, Check, ArrowRight, MessageCircle } from "lucide-react";
 
 export const Route = createFileRoute("/rooms/$slug")({
   loader: ({ params }) => {
-    const room = getRoom(params.slug);
-    if (!room) throw notFound();
-    return { room };
+    if (!isRoomSlug(params.slug)) throw notFound();
+    return { slug: params.slug };
   },
-  head: ({ loaderData }) => ({
-    meta: [
-      { title: `${loaderData?.room.name} — Naama Blue Hotel` },
-      { name: "description", content: loaderData?.room.description },
-      { property: "og:title", content: `${loaderData?.room.name} — Naama Blue Hotel` },
-      { property: "og:description", content: loaderData?.room.description },
-      { property: "og:image", content: loaderData?.room.image },
-    ],
-    links: [{ rel: "canonical", href: `/rooms/${loaderData?.room.slug}` }],
-  }),
+  head: ({ loaderData }) => {
+    const room = loaderData ? getRoom(loaderData.slug, en) : undefined;
+    return {
+      meta: [
+        { title: `${room?.name ?? "Room"} — Naama Blue Hotel` },
+        { name: "description", content: room?.description ?? "" },
+        { property: "og:title", content: `${room?.name ?? "Room"} — Naama Blue Hotel` },
+        { property: "og:description", content: room?.description ?? "" },
+        { property: "og:image", content: room?.image },
+      ],
+      links: [{ rel: "canonical", href: `/rooms/${loaderData?.slug}` }],
+    };
+  },
   errorComponent: ({ error }) => <div className="p-12 text-center">Couldn't load room: {error.message}</div>,
   notFoundComponent: () => (
     <div className="min-h-screen grid place-items-center p-12 text-center">
@@ -35,8 +39,10 @@ export const Route = createFileRoute("/rooms/$slug")({
 });
 
 function RoomDetail() {
-  const { room } = Route.useLoaderData();
-  const others = rooms.filter((r) => r.slug !== room.slug);
+  const { slug } = Route.useLoaderData();
+  const t = useTranslations();
+  const room = getRoom(slug, t)!;
+  const others = getLocalizedRooms(t).filter((r) => r.slug !== room.slug);
 
   return (
     <div className="min-h-screen bg-background">
